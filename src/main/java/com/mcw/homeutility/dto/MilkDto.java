@@ -15,7 +15,7 @@ public class MilkDto {
 
     private String date;
 
-    private DateFormat dateFormat = new SimpleDateFormat("hh-MM-yy");
+    private DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
 
     public MilkDto() {}
 

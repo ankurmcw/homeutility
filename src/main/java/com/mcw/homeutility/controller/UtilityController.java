@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.text.ParseException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,7 +34,7 @@ public class UtilityController {
     }
 
     @PostMapping("/milk")
-    public String addMilk(@ModelAttribute("milkDto") MilkDto milk) {
+    public String addMilk(@ModelAttribute("milkDto") MilkDto milk) throws ParseException {
         logger.info("Price: {}", milk.getPrice());
         logger.info("Date: {}", milk.getDate());
         milkService.storeMilkData(milk);
@@ -41,7 +43,13 @@ public class UtilityController {
 
     @GetMapping("/milk")
     public String getMilkDetails(Model model) {
-        model.addAttribute("milkDetails", milkService.getMilkDetails());
+        List<MilkDto> milkDtos = milkService.getMilkDetails();
+        int sum = 0;
+        for (MilkDto dto: milkDtos)
+            sum += dto.getPrice();
+
+        model.addAttribute("milkDetails", milkDtos);
+        model.addAttribute("total", sum);
         return "milk";
     }
 }
