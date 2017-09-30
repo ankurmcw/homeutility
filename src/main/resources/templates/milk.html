@@ -15,7 +15,7 @@
     <div class="container">
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/home">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li class="active"><a href="#">Milk Details</a></li>
             </ul>
         </div>
@@ -30,14 +30,17 @@
             <tr>
                 <th>Date</th>
                 <th>Price</th>
+                <th>Quantity</th>
             </tr>
             <tr th:each="milkDetail : ${milkDetails}">
                 <td th:text="${milkDetail.date}"></td>
                 <td th:text="${milkDetail.price}"></td>
+                <td th:text="${milkDetail.quantity}"></td>
             </tr>
             <tr>
                 <th>TOTAL</th>
                 <td th:text="${total}"></td>
+                <td></td>
             </tr>
         </table>
     </div>

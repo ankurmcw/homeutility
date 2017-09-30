@@ -1,7 +1,6 @@
 package com.mcw.homeutility.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -13,20 +12,11 @@ import java.util.Date;
 public class Milk {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    private Date date;
 
     private int price;
 
-    private Date date;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private int quantity;
 
     public int getPrice() {
         return price;
@@ -42,5 +32,13 @@ public class Milk {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

@@ -1,0 +1,5 @@
+applications:
+- name: home-utils
+  memory: 1G
+  instances: 1
+  path: ./target/homeutility-0.0.1-SNAPSHOT.jar

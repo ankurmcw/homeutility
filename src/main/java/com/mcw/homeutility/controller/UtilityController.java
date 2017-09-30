@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import static com.mcw.homeutility.utility.CommonUtils.getDate;
 
 /**
  * Created by renuka on 30/9/17.
@@ -27,10 +30,10 @@ public class UtilityController {
     @Autowired
     private MilkService milkService;
 
-    @GetMapping("/home")
-    public String welcome(Map<String, Object> model) {
-        model.put("message", "Hello world");
-        return "welcome";
+    @GetMapping("")
+    public String welcome(Map<String, Object> model) throws ParseException {
+        model.put("date", getDate(new Date()));
+        return "home";
     }
 
     @PostMapping("/milk")
@@ -38,7 +41,7 @@ public class UtilityController {
         logger.info("Price: {}", milk.getPrice());
         logger.info("Date: {}", milk.getDate());
         milkService.storeMilkData(milk);
-        return "redirect:home";
+        return "redirect:";
     }
 
     @GetMapping("/milk")
@@ -46,7 +49,7 @@ public class UtilityController {
         List<MilkDto> milkDtos = milkService.getMilkDetails();
         int sum = 0;
         for (MilkDto dto: milkDtos)
-            sum += dto.getPrice();
+            sum += (dto.getPrice() * dto.getQuantity());
 
         model.addAttribute("milkDetails", milkDtos);
         model.addAttribute("total", sum);

@@ -15,6 +15,8 @@ public class MilkDto {
 
     private String date;
 
+    private int quantity;
+
     private DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
 
     public MilkDto() {}
@@ -22,6 +24,7 @@ public class MilkDto {
     public MilkDto(Milk milk) {
         this.date = dateFormat.format(milk.getDate());
         this.price = milk.getPrice();
+        this.quantity = milk.getQuantity();
     }
 
     public int getPrice() {
@@ -38,5 +41,13 @@ public class MilkDto {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

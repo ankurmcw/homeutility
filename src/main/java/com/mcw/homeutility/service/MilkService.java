@@ -6,12 +6,12 @@ import com.mcw.homeutility.repo.MilkRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+
+import static com.mcw.homeutility.utility.CommonUtils.getDate;
 
 /**
  * Created by renuka on 30/9/17.
@@ -23,12 +23,11 @@ public class MilkService {
     @Autowired
     private MilkRepo milkRepo;
 
-    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
     public void storeMilkData(MilkDto milkDto) throws ParseException {
         Milk milk = new Milk();
-        milk.setDate(dateFormat.parse(milkDto.getDate()));
+        milk.setDate(getDate(milkDto.getDate()));
         milk.setPrice(milkDto.getPrice());
+        milk.setQuantity(milkDto.getQuantity());
         milkRepo.save(milk);
     }
 
