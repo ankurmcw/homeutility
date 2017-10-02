@@ -18,6 +18,8 @@ public class Milk {
 
     private int quantity;
 
+    private boolean delivered;
+
     public int getPrice() {
         return price;
     }
@@ -40,5 +42,13 @@ public class Milk {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public boolean getDelivered() {
+        return delivered;
+    }
+
+    public void setDelivered(boolean delivered) {
+        this.delivered = delivered;
     }
 }

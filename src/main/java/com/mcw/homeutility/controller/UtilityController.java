@@ -1,6 +1,7 @@
 package com.mcw.homeutility.controller;
 
 import com.mcw.homeutility.dto.MilkDto;
+import com.mcw.homeutility.exception.AppException;
 import com.mcw.homeutility.service.MilkService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,6 @@ import static com.mcw.homeutility.utility.CommonUtils.getDate;
 /**
  * Created by renuka on 30/9/17.
  */
-
 @Controller
 public class UtilityController {
 
@@ -37,11 +37,12 @@ public class UtilityController {
     }
 
     @PostMapping("/milk")
-    public String addMilk(@ModelAttribute("milkDto") MilkDto milk) throws ParseException {
+    public String addMilk(@ModelAttribute("milkDto") MilkDto milk) throws AppException {
         logger.info("Price: {}", milk.getPrice());
         logger.info("Date: {}", milk.getDate());
+        logger.info("Delivered: {}", milk.getDelivered());
         milkService.storeMilkData(milk);
-        return "redirect:";
+        return "redirect:milk";
     }
 
     @GetMapping("/milk")

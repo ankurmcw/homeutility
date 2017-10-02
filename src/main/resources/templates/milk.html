@@ -31,15 +31,18 @@
                 <th>Date</th>
                 <th>Price</th>
                 <th>Quantity</th>
+                <th>Delivered</th>
             </tr>
             <tr th:each="milkDetail : ${milkDetails}">
                 <td th:text="${milkDetail.date}"></td>
                 <td th:text="${milkDetail.price}"></td>
                 <td th:text="${milkDetail.quantity}"></td>
+                <td th:text="${milkDetail.delivered}"></td>
             </tr>
             <tr>
                 <th>TOTAL</th>
                 <td th:text="${total}"></td>
+                <td></td>
                 <td></td>
             </tr>
         </table>
